@@ -26,6 +26,19 @@ function App() {
     setTodos([...todos, data]);
   };
 
+  const handleUpdate = data => {
+    const now = (new Date()).toISOString();
+    data.UpdatedAt = now;
+  
+    setTodos(todos.map(item => {
+      // IDが一致する要素を差し替える
+      if (item.ID === data.ID) {
+        return data;
+      }
+      return item;
+    }));
+  };
+
   const handleDelete = id => {
     // IDが一致する項目のindexを取得
     const index = todos.findIndex(item => item.ID === id);
@@ -38,9 +51,11 @@ function App() {
       setTodos(newList);
     }
   };
-
+  
   return (
     <div className="App">
+
+      {/* <Todo key={item.ID} {...item} onSave={handleUpdate} onDelete={handleDelete} /> */}
 
       <TodoForm onSave={handleCreate} />
 
