@@ -8,7 +8,7 @@ function App() {
   const [todos, setTodos] = useState([
     {
       ID: 1,
-      Content: 'hoge',
+      Content: process.env.REACT_APP_CONTENT_WORD,
       Done: true,
       CreatedAt: (new Date()).toISOString(),
       UpdatedAt: (new Date()).toISOString(),
@@ -51,16 +51,15 @@ function App() {
       setTodos(newList);
     }
   };
-  
+
   return (
     <div className="App">
-
-      {/* <Todo key={item.ID} {...item} onSave={handleUpdate} onDelete={handleDelete} /> */}
 
       <TodoForm onSave={handleCreate} />
 
       {todos.map(item => (
         <Todo key={item.ID} {...item}
+          onSave={handleUpdate}
           onDelete={handleDelete}
         />)
       )}
