@@ -4,7 +4,7 @@ import './App.css';
 import Todo from './components/Todo';
 import TodoForm from './components/TodoForm';
 
-function App() {
+export default function App() {
   const [todos, setTodos] = useState([
     {
       ID: 1,
@@ -67,5 +67,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
